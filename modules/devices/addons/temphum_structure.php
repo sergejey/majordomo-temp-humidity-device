@@ -11,7 +11,7 @@ $this->device_types['sensor_temphum'] = array(
         'directionHumidity'=>array('DESCRIPTION'=>'Direction of changes','KEEP_HISTORY'=>0),
     ),
     'METHODS'=>array(
-        'valueUpdated'=>array('DESCRIPTION'=>'Value Updated'),
+        'valueUpdated'=>array('DESCRIPTION'=>'Value Updated','CALL_PARENT'=>1),
     ));
 
 
