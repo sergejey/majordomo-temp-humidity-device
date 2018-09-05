@@ -10,22 +10,22 @@ $linked_room=$this->getProperty('linkedRoom');
 $value=(float)$this->getProperty('valueHumidity');
 $minValue=(float)$this->getProperty('minHumidityValue');
 $maxValue=(float)$this->getProperty('maxHumidityValue');
-$is_normal=(int)$this->getProperty('normalValue');
+$is_normal=(int)$this->getProperty('normalHumidityValue');
 $directionTimeout=(int)$this->getProperty('directionTimeout');
 if (!$directionTimeout) {
     $directionTimeout=1*60*60;
 }
 
 if ($maxValue==0 && $minValue==0 && !$is_normal) {
-    $this->setProperty('normalValue', 1);
+    $this->setProperty('normalHumidityValue', 1);
 } elseif (($value>$maxValue || $value<$minValue) && $is_normal) {
-    $this->setProperty('normalValue', 0);
+    $this->setProperty('normalHumidityValue', 0);
     if ($this->getProperty('notify')) {
         //out of range notify
         say(LANG_DEVICES_NOTIFY_OUTOFRANGE. ' ('.$description.' '.$value.')', 2);
     }
 } elseif (($value<=$maxValue && $value>=$minValue) && !$is_normal) {
-    $this->setProperty('normalValue', 1);
+    $this->setProperty('normalHumidityValue', 1);
     if ($this->getProperty('notify')) {
         //back to normal notify
         say(LANG_DEVICES_NOTIFY_BACKTONORMAL. ' ('.$description.' '.$value.')', 2);
