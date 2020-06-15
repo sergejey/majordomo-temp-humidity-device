@@ -49,3 +49,6 @@ if ($linked_room && $this->getProperty('mainSensor')) {
         sg($linked_room.'.temperature',$this->getProperty('value'));
         sg($linked_room.'.humidity',$this->getProperty('valueHumidity'));
 }
+
+$this->callMethodSafe('keepAlive');
+$this->callMethod('statusUpdated');
